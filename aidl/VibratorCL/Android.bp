@@ -6,11 +6,11 @@ cc_library_shared {
     cflags: COMMON_CFLAGS,
     vendor: true,
     srcs: ["Vibrator.cpp"],
-    header_libs: select(soong_config_variable("qti_vibrator", "libpalclient_namespace"), {
-        any @ value: [
-            "//" + value + ":libspf-headers",
-            "//" + value + ":libarosal_headers",
-            "//" + value + ":libarpal_headers",
+    header_libs: select(soong_config_variable("qti_vibrator", "use_libpalclient"), {
+        true: [
+            "libspf-headers",
+            "libarosal_headers",
+            "libarpal_headers",
         ],
         default: [],
     }),
@@ -19,8 +19,8 @@ cc_library_shared {
         "android.hardware.vibrator-V2-ndk",
         "libbinder_ndk",
         "liblog",
-    ] + select(soong_config_variable("qti_vibrator", "libpalclient_namespace"), {
-        any @ value: ["//" + value + ":libpalclient"],
+    ] + select(soong_config_variable("qti_vibrator", "use_libpalclient"), {
+        true: ["libpalclient"],
         default: [],
     }),
 }

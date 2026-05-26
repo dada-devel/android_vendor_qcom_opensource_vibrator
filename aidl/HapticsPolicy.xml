@@ -38,16 +38,16 @@
 <hapticsPolicyConfiguration>
     <!--If timeout <= maxMs, then OL else CL -->
     <hapticsONAPI>
-        <maxMs>3000</maxMs>
+        <maxMs>0</maxMs>
     </hapticsONAPI>
     <!--Following effects are supported by OL, remaining by CL-->
     <hapticsPerformAPI>
-    <!-- 0 - CLICK, 1 - DOUBLE_CLICK, 2 - TICK, 3 - THUD, 4 - POP, 5 - HEAVY_CLICK-->
-        <effect_id>0,1,2,3,4,5</effect_id>
+    <!-- Empty list means all effects route to CL for higher intensity -->
+        <effect_id></effect_id>
     </hapticsPerformAPI>
     <!--If support == True, then OL else CL-->
     <hapticsComposeAPI>
-        <SupportCompose>True</SupportCompose>
+        <SupportCompose>False</SupportCompose>
     </hapticsComposeAPI>
     <!--If support == True, then OL else CL-->
     <hapticsComposePwleAPI>
